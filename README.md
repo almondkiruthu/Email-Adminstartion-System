@@ -1,2 +1,2 @@
 # Email-Adminstartion-System
-A simple email administration system that implements Java core
+A simple email administration system that implements core Java
