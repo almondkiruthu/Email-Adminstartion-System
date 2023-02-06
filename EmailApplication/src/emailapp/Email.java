@@ -51,5 +51,51 @@ public class Email {
        while (!flag);
        return null;
     }
+//    Generate Random password method
+    private String generatePassword(int length){
+       Random r = new Random();
+       String capitalChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       String smallChar = "abcdefghijklmnopqrstuvwxyz";
+       String numbers = "0123456789";
+       String symbols = "!@#$%&?";
+       String values = capitalChar+smallChar+numbers+symbols;
+
+       String password = "";
+       for(int i =0; i<length; i++){
+           password = password+values.charAt(r.nextInt(values.length()));
+       }
+
+       return password;
+
+    }
+//    Change password method
+    public void setPassword(){
+        boolean f = false;
+        do{
+            System.out.println("Do you want to change your password! (Y/N)");
+            char choice = scanner.next().charAt(0);
+            if(choice == 'Y'|| choice =='y'){
+                f = true;
+                System.out.println("Enter current password:");
+                String temp = scanner.next();
+                if(temp.equals(this.password)){
+                    System.out.println("Enter new password: ");
+                    this.password = scanner.next();
+                    System.out.println("Password changed successfully");
+                }
+                else{
+                    System.out.println("Incorrect password");
+                }
+            }
+            else if(choice== 'N' || choice=='n'){
+               f = true;
+               System.out.println("Password changing option cancelled!");
+            }
+            else{
+                System.out.println("Enter valid choice");
+            }
+        }while(!f);
+    }
 }
+
 
